@@ -1,0 +1,48 @@
+<!-- filter.component.html -->
+<div class="col-lg-3 mb-4">
+    <div class="border rounded p-3 bg-white shadow-sm">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="mb-0 fw-bold">Search Filter</h5>
+        <a href="#" class="text-muted small">Clear All</a>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Search By Keyword</label>
+        <input type="text" class="form-control" placeholder="Search by keywords...">
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Job Category</label>
+        <select class="form-select">
+          <option>Choose category</option>
+          <option>Developer</option>
+          <option>Designer</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Radius in Miles</label>
+        <input type="range" class="form-range" min="0" max="1000" value="200">
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Experience Level</label><br>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" checked>
+          <label class="form-check-label">Beginner (54)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox">
+          <label class="form-check-label">1+ Year (32)</label>
+        </div>
+        <!-- Repeat other options similarly -->
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Job Type</label><br>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox">
+          <label class="form-check-label">Full time</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox">
+          <label class="form-check-label">Part time</label>
+        </div>
+      </div>
+    </div>
+  </div>
