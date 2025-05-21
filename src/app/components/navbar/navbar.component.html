@@ -1,32 +1,52 @@
-<!-- src/app/components/navbar/navbar.component.html -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3">
   <div class="container">
-    <a class="navbar-brand" href="#">Candidate Portal</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/candidates" routerLinkActive="active">For Candidate</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">For Employer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pages</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Help</a>
-        </li>
-      </ul>
-      <div class="d-flex" *ngIf="isLoggedIn()">
-        <button class="btn btn-outline-light me-2">Upload Resume</button>
-        <button class="btn btn-danger" (click)="logout()">Sign Out</button>
-      </div>
+    <!-- Left side: Main navigation -->
+    <ul class="navbar-nav me-auto align-items-center">
+      <li class="nav-item">
+        <a class="nav-link active text-success fw-bold border-bottom border-success" 
+           style="font-weight: 500;" 
+           routerLink="/home" 
+           routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="candidateDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" routerLink="/candidates" routerLinkActive="active">
+          For Candidate
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="candidateDropdown">
+          <li><a class="dropdown-item" href="#">Action 1</a></li>
+          <li><a class="dropdown-item" href="#">Action 2</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="employerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" routerLink="/employer" routerLinkActive="active">
+          For Employer
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="employerDropdown">
+          <li><a class="dropdown-item" href="#">Action 1</a></li>
+          <li><a class="dropdown-item" href="#">Action 2</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" routerLink="/pages" routerLinkActive="active">
+          Pages
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <li><a class="dropdown-item" href="#">Page 1</a></li>
+          <li><a class="dropdown-item" href="#">Page 2</a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLink="/help" routerLinkActive="active">Help</a>
+      </li>
+    </ul>
+    <!-- Right side: Sign In and Upload Resume -->
+    <div class="d-flex align-items-center">
+      <a class="nav-link me-2 d-flex align-items-center" href="#">
+        <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
+      </a>
+      <button class="btn btn-success fw-bold px-4" type="button">
+        <i class="bi bi-cloud-arrow-up me-1"></i> Upload Resume
+      </button>
     </div>
   </div>
 </nav>
