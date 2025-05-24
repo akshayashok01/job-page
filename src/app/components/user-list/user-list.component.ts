@@ -1,23 +1,51 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
+import { UserService } from '../../services/user.service';
+
+
+interface User {
+  name: string;
+  designation: string;
+  rating: number;
+  salary: number;
+  experience: number;
+  image: string;
+}
 @Component({
   selector: 'app-user-list',
   imports: [CommonModule],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit {
+  users: User[] = [];
+  paginatedUsers: User[] = [];
   currentPage = 1;
-  totalPages = 6;
-  pages: number[] = [];
+  itemsPerPage = 6;
+  
 
-  ngOnInit() {
-    this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe((data: User[]) => {
+      this.users = data;
+      this.updatePagination();
+    });
   }
 
-  goToPage(page: number) {
+  updatePagination() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.paginatedUsers = this.users.slice(start, end);
+  }
+
+  changePage(page: number) {
     this.currentPage = page;
-    // optionally: fetch new user data here based on the page
+    this.updatePagination();
+  }
+
+  totalPages(): number[] {
+    return Array(Math.ceil(this.users.length / this.itemsPerPage)).fill(0).map((_, i) => i + 1);
   }
 }
