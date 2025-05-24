@@ -24,4 +24,8 @@
   input[type="range"]::-ms-thumb {
     background-color: #198754;
   }
+
+.bg-clr{
+  background-color: rgb(239, 246, 244);
+}
   
