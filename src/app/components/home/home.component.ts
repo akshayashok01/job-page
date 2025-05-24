@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FilterComponent } from '../filter/filter.component';
 import { UserListComponent } from '../user-list/user-list.component';
+import { JoinComponent } from '../join/join.component';
+import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-home',
-  imports: [FilterComponent,UserListComponent],
+  imports: [FilterComponent,UserListComponent,JoinComponent,BreadcrumbComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
