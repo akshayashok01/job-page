@@ -12,8 +12,8 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-username = '';
-password= '';
+username = 'akshayashok238@gmail.com';
+password= 'admin123';
 errorMessage = '';
 constructor(private authService : AuthService,private router : Router){}
 
@@ -21,7 +21,7 @@ onSubmit():void{
 
   const validation = this.authService.validateCredentials(this.username,this.password);
   if(this.authService.login(this.username,this.password)){
-    this.router.navigate(['/candidates']);
+    this.router.navigate(['/home']);
   }
   else{
     this.errorMessage = validation.message;

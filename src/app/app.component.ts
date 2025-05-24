@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnDestroy } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,26 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy{
   title = 'job-angular';
 
-  constructor(public authService:AuthService){}
+  showNavbar = true;
+  private routerSubsc : Subscription;
+
+  constructor(private router : Router){
+    this.routerSubsc = this.router.events.subscribe(event => {
+      if(event instanceof NavigationEnd){
+        this.showNavbar = ! event.urlAfterRedirects.includes('/login');
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    if(this.routerSubsc){
+      this.routerSubsc.unsubscribe();
+    }
+    
+  }
+
+ 
 }
